@@ -1,0 +1,32 @@
+<script>
+  var initial_title = document.title;
+  var nb=0;
+  var nb_products = prestashop.cart.products_count;
+  
+  var active_tab= setInterval(function(){
+        var tab_state=document.visibilityState;
+        
+        if(tab_state=="visible"){
+          document.title=initial_title;
+        }else{
+          nb_products = prestashop.cart.products_count;
+          if(nb%2==0){
+            
+            switch (nb_products) {
+              case 0:
+                document.title="🖤 Vous nous manquez déjà!";
+                break;
+              case 1:
+                document.title="🖤 1 produit vous attend dans votre pannier";
+                break;
+              default:
+                document.title="🖤 " + nb_products + " produits vous attendent dans votre pannier";
+              }
+           
+          }else{
+          document.title="🖤 Vous nous manquez déjà!";
+          }
+        }
+          nb=nb+1;
+      }, 500);
+ </script>
